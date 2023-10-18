@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head th:insert="~{fragments/head :: head}"></head>
+
+<body>
+	<header th:replace="~{fragments/fragHeader :: header}"></header>
+	
+	<h1>Photo index!</h1>
+	<div class="container">
+		
+		<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Title</th>
+			      <th scope="col">Is Visible</th>
+			      <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr 
+			    	th:each="photo : ${arrayPhotos}"
+			    	th:object="${photo}">
+			      <td>[[*{id}]]</td>
+			      <td>[[*{title}]]</td>
+			      <td>[[*{visible}]]</td>
+			      <td>
+					  
+					  <a th:href="@{photo/{id}(id = ${photo.id})}" class="btn btn-success">show</a>
+					  <a href="#" class="btn btn-warning">edit</a>
+					  <a href="#" class="btn btn-danger">delete</a>
+					  
+				  </td>
+			    </tr>
+			  </tbody>
+		</table>
+		
+	</div>
+
+</body>
+</html>

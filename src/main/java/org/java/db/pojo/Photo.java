@@ -46,6 +46,12 @@ public class Photo {
 		setUrl(url);
 		setVisible(visible);
 	}
+	public Photo(String title,String description,String url) {
+		
+		setTitle(title);
+		setDescription(description);
+		setUrl(url);
+	}
 		
 	// GETTER & SETTER
 
@@ -89,6 +95,14 @@ public class Photo {
 		this.visible = visible;
 	};
 	
+	@Override
+	public String toString() {
+		return  "[id] : " + getId() + "\n" +
+				"[title] : " + getTitle() + "\n" +
+				"[description] : " + getDescription() + "\n" +
+				"[url] : " + getUrl() + "\n" +
+				"[visible] : " + isVisible() + "\n";
+	}
 	
 	//visible,categoryes
 }

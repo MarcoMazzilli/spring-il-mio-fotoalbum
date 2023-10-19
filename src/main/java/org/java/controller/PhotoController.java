@@ -104,5 +104,13 @@ public class PhotoController {
 		
 		return "redirect:/admin/photo";
 	}
+	
+	@PostMapping("admin/photo/delete/{id}")
+	public String delete(@PathVariable int id) {
+		
+		photoService.delete(photoService.findById(id));
+		
+		return "redirect:/admin/photo";
+	}
 
 }

@@ -14,8 +14,8 @@
 			</div>
 				
 		</div>
-		
-		<table class="table">
+		<h2 th:if="${arrayPhotos.size() <= 0}">Non sono presenti foto da mostrare</h2>
+		<table class="table" th:if="${arrayPhotos.size() > 0}">
 			  <thead>
 			    <tr>
 			      <th scope="col">ID</th>
@@ -35,7 +35,9 @@
 					  
 					  <a th:href="@{photo/{id}(id = ${photo.id})}" class="btn btn-success">Show</a>
 					  <a th:href="@{photo/update/{id}(id = ${photo.id})}" class="btn btn-warning">Edit</a>
-					  <a href="#" class="btn btn-danger">Delete</a>
+					  <form style="display: inline;" th:action="@{photo/delete/{id}(id = ${photo.id})}" method="post">
+						  <button type="submit" class="btn btn-danger">Delete</button>
+					  </form>
 					  
 				  </td>
 			    </tr>

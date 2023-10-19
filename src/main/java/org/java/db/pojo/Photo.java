@@ -29,7 +29,7 @@ public class Photo {
 	private String description;
 	
 	@Column(nullable = false)
-	@NotBlank(message = "L'url è un campo obbligatorio")
+	@NotBlank(message = "Url è un campo obbligatorio")
 	@Length(
 			max = 255 ,
 			message = "Lunghezza massima dell'url 255 caratteri")

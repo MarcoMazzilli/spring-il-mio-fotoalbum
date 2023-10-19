@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
@@ -70,6 +69,38 @@ public class PhotoController {
 			System.err.println(e.getMessage());
 		}
 		System.out.println("Photo saved on db");
+		
+		return "redirect:/admin/photo";
+	}
+	
+	@GetMapping("admin/photo/update/{id}")
+	public String getUpdate(
+			@PathVariable int id,
+			Model model
+			) {
+		
+		Photo photo = photoService.findById(id);
+		model.addAttribute("photo", photo);
+		
+		return "photoCRUDtemplate/create_update";
+	}
+	
+	@PostMapping("admin/photo/update/{id}")
+	public String postUpdate(
+			@Valid @ModelAttribute Photo photo,
+			BindingResult bindingResult,
+			Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return "photoCRUDtemplate/create_update";
+			}
+		
+		try {
+			photoService.save(photo);			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("New Photo updated on db");
 		
 		return "redirect:/admin/photo";
 	}

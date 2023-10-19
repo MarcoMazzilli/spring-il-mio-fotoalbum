@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head th:insert="~{fragments/head :: head}"></head>
+
+<body>
+	
+	<header th:replace="~{fragments/fragHeader :: header}"></header>
+	<div class="container"> 
+		<h1>Form creazione/modifica</h1>
+		
+		<form th:object="${photo}" method="POST">
+			<div class="row shadow my-3">
+					<div class="col col-5 p-3">
+						
+						<div th:if="${#fields.hasErrors('title')}">
+							<ul>
+								<li class="text-danger" th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+							</ul>
+						</div>
+	
+						<div class="mb-3">
+							<label for="title" class="form-label">Titolo della foto</label>
+							<input type="text" class="form-control" id="title" name="title" th:field="*{title}"
+								placeholder="Es. La montagna">
+						</div>
+	
+	
+						<div th:if="${#fields.hasErrors('url')}">
+							<ul>
+								<li class="text-danger" th:each="err : ${#fields.errors('url')}" th:text="${err}"></li>
+							</ul>
+						</div>
+	
+						<div class="mb-3">
+							<label for="url" class="form-label">Url immagine</label>
+							<input type="text" class="form-control" id="url" name="url" th:field="*{url}"
+								placeholder="Inserisci l'url di un immagine">
+						</div>
+						<div th:if="${#fields.hasErrors('description')}">
+							<ul>
+								<li class="text-danger" th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+							</ul>
+						</div>
+					
+					<button type="submit" class="btn btn-primary">Crea foto</button>
+					</div>
+					
+					<div class="col col-7  p-3">
+						
+						<div class="mb-3">
+							<label for="description" class="form-label">Descrizione</label>
+							<input type="text" class="form-control" id="description" name="description"
+								th:field="*{description}" placeholder="255 caratteri">
+						</div>
+	
+						
+							<h5 >Visibilita sulla pagina pubblica</h5>
+						<div class="form-check d-flex gap-5">
+							<div>
+								<input class="form-check-input" type="radio" value="true" name="visible" id="is-visible" th:field="*{visible}">
+								<label for="is-visible">Visibile</label>
+							</div>
+							<div>							
+								<input class="form-check-input" type="radio" value="false" name="visible" id="is-hidden" th:field="*{visible}">
+								<label for="is-hidden">Nascosto</label>
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+				</div>
+			</row>
+
+			
+		</form>
+	</div>
+
+</body>
+</html>

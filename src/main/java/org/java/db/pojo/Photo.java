@@ -18,22 +18,21 @@ public class Photo {
 	private int id;
 	
 	@Column(nullable = false)
-	@NotBlank(message = "Title cannot be null")
+	@NotBlank(message = "Il titolo è un campo obbligatorio")
 	private String title;
 	
 	@Column(nullable = true)
 	@Length(
 			min = 2 ,
 			max = 255 ,
-			message = "Length must be between 2 and 255 characters")
+			message = "La lunghezza deve essere compresa tra 2 e 255 caratteri")
 	private String description;
 	
 	@Column(nullable = false)
-	@NotBlank(message = "Url cannot be null")
+	@NotBlank(message = "L'url è un campo obbligatorio")
 	@Length(
-			min = 2 ,
 			max = 255 ,
-			message = "Length must be between 2 and 255 characters")
+			message = "Lunghezza massima dell'url 255 caratteri")
 	private String url;
 	
 	private boolean visible = true;

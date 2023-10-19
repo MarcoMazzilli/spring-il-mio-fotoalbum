@@ -5,8 +5,15 @@
 <body>
 	<header th:replace="~{fragments/fragHeader :: header}"></header>
 	
-	<h1>Photo index!</h1>
 	<div class="container">
+		<div class="d-flex justify-content-between align-items-center">
+			<h1>Photo index!</h1>
+			<div>
+			<a class="btn btn-success" 
+			th:href="@{photo/create}"> crea foto</a>
+			</div>
+				
+		</div>
 		
 		<table class="table">
 			  <thead>

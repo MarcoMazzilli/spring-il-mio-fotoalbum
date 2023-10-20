@@ -121,8 +121,7 @@ public class Photo {
 				"[title] : " + getTitle() + "\n" +
 				"[description] : " + getDescription() + "\n" +
 				"[url] : " + getUrl() + "\n" +
-				"[visible] : " + isVisible() + "\n" +
-				"[categories] : " + getCategories();
+				"[visible] : " + isVisible() + "\n";
 	}
 	
 }

@@ -60,8 +60,7 @@ public class Category {
 	@Override
 	public String toString() {
 		return "[id] : " + getId() + "\n" +
-				"[name] : " + getName() + "\n" +
-				"[photos] : " + getPhotos();
+				"[name] : " + getName() + "\n";
 	}
 	
 	

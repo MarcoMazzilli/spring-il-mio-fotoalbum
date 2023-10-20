@@ -81,7 +81,7 @@
 					<input type="checkbox" 
 						th:id="${'cat' + category.id}" 
 						th:value="*{id}" 
-						>
+						th:field="${photo.categories}">
 						
 					<label th:for="${'cat' + category.id}">[[${category.name}]]</label>
 					

@@ -16,11 +16,12 @@ public class PhotoService {
 	public void save(Photo photo) {
 		photoRepo.save(photo);
 	}
+	
 	public List<Photo> findAll(){
 
-		List<Photo> arrayPizze = photoRepo.findAll();
+		List<Photo> arrayPhoto = photoRepo.findAll();
 
-		return arrayPizze;
+		return arrayPhoto;
 	}
 
 	public Photo findById(int id) {

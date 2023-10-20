@@ -2,7 +2,9 @@ package org.java.controller;
 
 import java.util.List;
 
+import org.java.db.pojo.Category;
 import org.java.db.pojo.Photo;
+import org.java.db.service.CategoryService;
 import org.java.db.service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,9 @@ public class PhotoController {
 	
 	@Autowired
 	private PhotoService photoService;
+	
+	@Autowired 
+	private CategoryService categoryService;
 	
 	@GetMapping("/admin/photo")
 	public String photoIndex(
@@ -49,6 +54,8 @@ public class PhotoController {
 	public String create(Model model) {
 		
 		model.addAttribute("photo", new Photo());
+		model.addAttribute("categories", categoryService.findAll());
+        
 		
 		return "photoCRUDtemplate/create_update";
 	}
@@ -80,7 +87,14 @@ public class PhotoController {
 			) {
 		
 		Photo photo = photoService.findById(id);
+		List <Category> arrayCategories = categoryService.findAll();
+		
 		model.addAttribute("photo", photo);
+		model.addAttribute("arrayCategories", arrayCategories);
+	
+//		for (Category cat : categories) {
+//			System.err.println(cat);
+//		}
 		
 		return "photoCRUDtemplate/create_update";
 	}

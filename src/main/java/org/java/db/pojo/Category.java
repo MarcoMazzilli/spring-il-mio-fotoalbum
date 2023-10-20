@@ -2,6 +2,8 @@ package org.java.db.pojo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +24,14 @@ public class Category {
 	private String name;
 	
 	@ManyToMany(mappedBy = "categories")
-	public List<Photo> photos;
+	@JsonBackReference
+	private List<Photo> photos;
+	
+	public Category() {}
+	public Category(String name) {
+		setName(name);
+	}
+	
 
 	public int getId() {
 		return id;
@@ -50,9 +59,9 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "id" + getId() + "\n" +
-				"name" + getName() + "\n" +
-				"photos" + getPhotos();
+		return "[id] : " + getId() + "\n" +
+				"[name] : " + getName() + "\n" +
+				"[photos] : " + getPhotos();
 	}
 	
 	

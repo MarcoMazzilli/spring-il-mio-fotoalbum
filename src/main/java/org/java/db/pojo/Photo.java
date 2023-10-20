@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,6 +44,7 @@ public class Photo {
 	private boolean visible = true;
 	
 	@ManyToMany
+	@JsonManagedReference
 	private List<Category> categories;
 	
 	public Photo() {}
@@ -103,12 +106,15 @@ public class Photo {
 		this.visible = visible;
 	};
 	
+	
 	public List<Category> getCategories() {
 		return categories;
 	}
+	
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+	
 	@Override
 	public String toString() {
 		return  "[id] : " + getId() + "\n" +
@@ -119,5 +125,4 @@ public class Photo {
 				"[categories] : " + getCategories();
 	}
 	
-	//visible,categoryes
 }

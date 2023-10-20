@@ -69,6 +69,24 @@
 					</div>
 
 				</div>
+				
+				<div class="row shadow">
+					<h1>Categorie :</h1>
+					
+					<div class="wrapper-checkbox col-1 m-2"
+						 th:each="category : ${arrayCategories}"
+						 th:object="${category}"
+						 style="cursor: pointer;">
+						 
+					<input type="checkbox" 
+						th:id="${'cat' + category.id}" 
+						th:value="*{id}" 
+						>
+						
+					<label th:for="${'cat' + category.id}">[[${category.name}]]</label>
+					
+					</div>
+				</div>
 				</div>
 			</row>
 

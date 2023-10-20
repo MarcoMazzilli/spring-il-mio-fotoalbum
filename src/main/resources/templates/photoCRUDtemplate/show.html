@@ -16,6 +16,13 @@
 					  
 	    	    	<h5 class="card-title">[[*{title}]]</h5>
 		    		<p class="card-text">[[*{description}]]</p>
+		    		<h4 th:if="${photo.categories.size() <= 0}">Nessuna categoria associata</h4>
+		    		<div th:if="${photo.categories.size() > 0}">
+						<h4>Categorie :</h4>
+						<ul>
+							<li th:each="category : ${photo.categories}">[[${category.name}]]</li>
+						</ul>
+						</div>
 			   		<a th:href="@{/admin/photo}" class="btn btn-danger">Torna alla home</a>
 			   	   
 				</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head th:insert="~{fragments/head :: head}"></head>
+
+<body>
+	<header th:replace="~{fragments/fragHeader :: header}"></header>
+	
+	<div class="container">
+		<div class="d-flex justify-content-between align-items-center">
+			<h1>'User' dashboard</h1>
+			<div>
+			<a class="btn btn-outline-success" th:href="@{category/create}">Aggiungi categoria</a>
+			</div>
+				
+		</div>
+		<h2 th:if="${arrayCategories.size() <= 0}">Non sono presenti categorie da mostrare</h2>
+		<table class="table" th:if="${arrayCategories.size() > 0}">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nome categoria</th>
+			      <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr 
+			    	th:each="category : ${arrayCategories}"
+			    	th:object="${category}">
+			      <td>[[*{id}]]</td>
+			      <td>[[*{name}]]</td>
+			      <td>					  
+					  <a th:href="@{category/update/{id}(id = ${category.id})}" class="btn btn-outline-warning">Edit</a>
+					  <form style="display: inline;" th:action="@{category/delete/{id}(id = ${category.id})}" method="post">
+						  <button type="submit" class="btn btn-outline-danger">Delete</button>
+					  </form>
+					  
+				  </td>
+			    </tr>
+			  </tbody>
+		</table>
+		
+	</div>
+
+</body>
+</html>

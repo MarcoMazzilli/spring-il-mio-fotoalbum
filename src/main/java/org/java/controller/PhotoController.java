@@ -54,7 +54,7 @@ public class PhotoController {
 	public String create(Model model) {
 		
 		model.addAttribute("photo", new Photo());
-		model.addAttribute("categories", categoryService.findAll());
+		model.addAttribute("arrayCategories", categoryService.findAll());
         
 		
 		return "photoCRUDtemplate/create_update";

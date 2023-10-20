@@ -25,8 +25,10 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Photo ph1 = new Photo("Il mare", "Foto del mare", "##", false);
-		Photo ph2 = new Photo("La Montagna", "Foto della montagna", "##");
+		String urlPhoto = "https://cdn.pixabay.com/photo/2023/09/05/16/39/sunrise-8235461_960_720.jpg";
+		
+		Photo ph1 = new Photo("Il mare", "Foto del mare", urlPhoto, false);
+		Photo ph2 = new Photo("La Montagna", "Foto della montagna", urlPhoto);
 		
 		System.out.println(ph1);
 		System.out.println("\n---------------------\n");
@@ -45,7 +47,7 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		categoryRepository.save(c1);
 		categoryRepository.save(c2);
 		
-		Photo ph3 = new Photo("Tramonto", "Descrizione del tramonto", "url Foto", c1,c2);
+		Photo ph3 = new Photo("Tramonto", "Descrizione del tramonto", urlPhoto , c1,c2);
 		photoRepository.save(ph3);
 		
 		System.err.println(ph3);

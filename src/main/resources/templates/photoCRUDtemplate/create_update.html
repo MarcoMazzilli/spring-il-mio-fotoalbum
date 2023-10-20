@@ -5,8 +5,9 @@
 <body>
 	
 	<header th:replace="~{fragments/fragHeader :: header}"></header>
-	<div class="container"> 
-		<h1>Form creazione/modifica</h1>
+	<div class="container">
+		<h1 th:if="${photo.id == 0}">Salva una nuova foto</h1>
+		<h1 th:if="${photo.id != 0}">Aggiorna : '[[${photo.title}]]'</h1>
 		
 		<form th:object="${photo}" method="POST">
 			<div class="row shadow my-3">
@@ -49,8 +50,8 @@
 						
 						<div class="mb-3">
 							<label for="description" class="form-label">Descrizione</label>
-							<input type="text" class="form-control" id="description" name="description"
-								th:field="*{description}" placeholder="255 caratteri">
+							<textarea type="text" class="form-control" id="description" name="description"
+								th:field="*{description}" placeholder="255 caratteri"></textarea>
 						</div>
 	
 						

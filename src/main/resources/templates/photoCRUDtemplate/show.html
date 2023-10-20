@@ -10,20 +10,25 @@
 					
 			<div class="card" style="width: 50%;">
 				
-				<img src="#" class="card-img-top" alt="no image found">
+				<img th:src="${photo.url}" class="card-img-top" alt="no image found">
 				  
 				<div class="card-body" th:object="${photo}">
 					  
-	    	    	<h5 class="card-title">[[*{title}]]</h5>
-		    		<p class="card-text">[[*{description}]]</p>
+	    	    	<div>
+						<p><strong>Titolo: </strong>[[*{title}]]</p>
+					</div>
+					
+		    		<p class="card-text"><strong>Descrizione: </strong>[[*{description}]]</p>
 		    		<h4 th:if="${photo.categories.size() <= 0}">Nessuna categoria associata</h4>
 		    		<div th:if="${photo.categories.size() > 0}">
 						<h4>Categorie :</h4>
 						<ul>
-							<li th:each="category : ${photo.categories}">[[${category.name}]]</li>
+							<li th:each="category : ${photo.categories}">
+								<span>[[${category.name}]]</span>
+							</li>
 						</ul>
 						</div>
-			   		<a th:href="@{/admin/photo}" class="btn btn-danger">Torna alla home</a>
+			   		<a th:href="@{/admin/photo}" class="btn btn-danger">Torna alla lista</a>
 			   	   
 				</div>
 				  

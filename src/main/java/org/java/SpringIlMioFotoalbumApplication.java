@@ -1,5 +1,9 @@
 package org.java;
 
+import org.java.db.auth.pojo.Role;
+import org.java.db.auth.pojo.User;
+import org.java.db.auth.service.RoleService;
+import org.java.db.auth.service.UserService;
 import org.java.db.pojo.Category;
 import org.java.db.pojo.Photo;
 import org.java.db.repository.CategoryRepository;
@@ -8,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
@@ -17,6 +22,12 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private UserService userService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringIlMioFotoalbumApplication.class, args);
@@ -50,7 +61,18 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		Photo ph3 = new Photo("Tramonto", "Descrizione del tramonto", urlPhoto , c1,c2);
 		photoRepository.save(ph3);
 		
-		System.err.println(ph3);
+		System.out.println(ph3);
+		
+		String psw = new BCryptPasswordEncoder().encode("psw");
+		
+		Role admin = new Role("ADMIN");
+		roleService.save(admin);
+		
+		User Admin = new User("Admin", psw, admin);
+		userService.save(Admin);
+		
+		
+		
 	}
 
 }

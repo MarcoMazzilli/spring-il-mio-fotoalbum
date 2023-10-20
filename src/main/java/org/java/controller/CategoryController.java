@@ -119,5 +119,24 @@ public class CategoryController {
 		
 		return "redirect:/admin/category";
 	}
+	
+	// delete
+	@PostMapping("admin/category/delete/{id}")
+	public String delete(@PathVariable int id) {
+		
+		Category categoryToDelete = categoryService.findById(id);
+		
+		for (Photo c : categoryToDelete.getPhotos() ) {
+					
+					c.deleteCategories(categoryToDelete);
+					photoService.save(c);
+				}
+		
+		categoryService.delete(categoryToDelete);
+		
+		
+		
+		return "redirect:/admin/photo";
+	}
 
 }

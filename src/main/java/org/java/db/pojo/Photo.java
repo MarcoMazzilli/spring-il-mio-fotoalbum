@@ -115,6 +115,11 @@ public class Photo {
 		this.categories = categories;
 	}
 	
+	public void deleteCategories(Category category) {
+		
+		getCategories().remove(category);
+	}
+	
 	@Override
 	public String toString() {
 		return  "[id] : " + getId() + "\n" +

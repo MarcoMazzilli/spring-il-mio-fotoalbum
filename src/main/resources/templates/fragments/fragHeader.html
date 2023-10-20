@@ -16,7 +16,7 @@
 						<img style="width: 100px;" th:src="@{/image/logo-photography.png}" alt="logo not-fount" class="logo">
 					</a>
 				</div>
-				<div class="col col-right col-8">
+				<div sec:authorize="hasAnyAuthority('ADMIN')" class="col col-right col-8">
 					<form class="h-100 d-flex align-items-center justify-content-end" action="/">
 					  <div class="d-flex">
 					      <input type="text" name="pizzaName" class="form-control" placeholder="Cerca la tua foto">

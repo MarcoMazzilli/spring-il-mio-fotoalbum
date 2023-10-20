@@ -6,6 +6,7 @@
 	<header th:replace="~{fragments/fragHeader :: header}"></header>
 	<div class="container text-center">
 		
+	<h4>Logged as : <span sec:authentication="name"></span> </h4>
 	<h1>Clicca sul bottone per accedere alla tua dashboard autore!</h1>
 	<a  class="btn btn-primary" href="/admin/photo">Click to login</a>
 	<p><small>Se non hai un account ti consigliamo di registrarti</small></p>

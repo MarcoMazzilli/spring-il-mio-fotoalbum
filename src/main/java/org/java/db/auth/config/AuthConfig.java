@@ -19,7 +19,7 @@ public class AuthConfig {
 			.requestMatchers("/admin/**").hasAuthority("ADMIN")
 			.requestMatchers("/**").permitAll().
 			and().formLogin()
-			.and().logout();
+			.and().logout().logoutSuccessUrl("/");
 				return http.build();
 	}
 	
